@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Speed Meter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="content-wrapper">
+            <h1 class="title">Reading Speed Meter</h1>
+            
+            <div class="language-nav">
+                <button id="lang-en" class="language-btn language-btn-active">English</button>
+                <button id="lang-es" class="language-btn language-btn-inactive">Español</button>
+                <button id="lang-ru" class="language-btn language-btn-inactive">Русский</button>
+                <button id="lang-de" class="language-btn language-btn-inactive">Deutsche</button>
+                <button id="lang-fr" class="language-btn language-btn-inactive">Français</button>
+            </div>
+
+            <div class="wpm-display">
+                <span class="wpm-number" id="avg-wpm">—</span>
+                <span class="wpm-label">WPM</span>
+            </div>
+
+            <div class="paragraph-box">
+                <p class="paragraph-text" id="paragraph-text">Click Start to load a paragraph</p>
+            </div>
+
+            <div class="button-container">
+                <button id="start-btn" class="start-btn">
+                    Start
+                    <span class="hotkey-hint">(Space)</span>
+                </button>
+            </div>
+
+            <div class="stats-bar">
+                <div>
+                    <span class="stat-label">Words:</span> <span id="word-count">0</span>
+                </div>
+                <div>
+                    <span class="stat-label">Seconds:</span> <span id="seconds">0</span>
+                </div>
+                <div>
+                    <span class="stat-label">Estimated:</span> <span id="estimated">—</span>
+                </div>
+            </div>
+
+            <div id="results-container" class="results-container" style="display: none;">
+                <h2 class="results-title">Results</h2>
+                <div id="results-list" class="results-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
