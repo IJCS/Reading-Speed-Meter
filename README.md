@@ -18,4 +18,6 @@ A lightweight, web-based tool designed to help users measure their reading speed
 Originally, I considered using public domain literature for the reading samples. However, to ensure 100% compliance and avoid any copyright ambiguities, I decided to use AI-generated texts.
 
 ## Creator support
-If this tool helped you track your progress or if you find the project useful, consider supporting my work! Every "cafecito" helps me: https://cafecito.app/ijcs
+If this tool helped you track your progress or if you find the project useful, consider supporting my work! Every donatios helps me: 
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/H2H11RMG69) [![Invitame un café en cafecito.app](https://cdn.cafecito.app/imgs/buttons/button_3.svg)](https://cafecito.app/ijcs)
