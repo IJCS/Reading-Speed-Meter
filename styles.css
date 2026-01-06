@@ -25,6 +25,13 @@ body {
     text-align: center;
     margin-bottom: 1.5rem;
     color: #1f2937;
+	white-space: nowrap;
+}
+
+@media (max-width: 450px) {
+    .title {
+        font-size: 1.25rem;
+    }
 }
 
 .language-nav {
@@ -32,6 +39,7 @@ body {
     justify-content: center;
     gap: 1rem;
     margin-bottom: 2rem;
+	flex-wrap: wrap;
 }
 
 .language-btn {
