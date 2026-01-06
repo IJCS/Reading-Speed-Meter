@@ -124,7 +124,7 @@ function loadRandomText() {
     if (textsArray && textsArray.length > 0) {
         const randomIndex = Math.floor(Math.random() * textsArray.length);
         state.currentText = textsArray[randomIndex];
-        elements.paragraphText.textContent = 'Press Start to begin reading';
+        elements.paragraphText.textContent = translations[state.currentLanguage].pressStart;
     } else {
         elements.paragraphText.textContent = `No texts available for ${state.currentLanguage}`;
     }
