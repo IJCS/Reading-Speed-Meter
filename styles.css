@@ -32,6 +32,14 @@ body {
     .title {
         font-size: 1.25rem;
     }
+	.result-item {
+		flex-direction: column-reverse;
+	}
+	
+	.paragraph-text {
+		line-height: 1.50;
+		font-size: 1.10rem;
+	}
 }
 
 .language-nav {
@@ -131,13 +139,15 @@ body {
 
 .stats-bar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     color: #374151;
     margin-bottom: 2rem;
+    flex-wrap: wrap;
 }
 
 .stat-label {
     font-weight: 500;
+	margin: 0px 10px;
 }
 
 .results-container {
