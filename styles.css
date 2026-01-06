@@ -12,6 +12,30 @@ body {
     min-height: 100vh;
     background-color: #f9fafb;
     padding: 2rem;
+    position: relative
+}
+
+.github-link {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1f2937;
+    transition: color 0.3s ease;
+    z-index: 10;
+}
+
+.github-link:hover {
+    color: #2563eb;
+}
+
+.github-icon {
+    width: 32px;
+    height: 32px;
 }
 
 .content-wrapper {
@@ -40,6 +64,7 @@ body {
 		line-height: 1.50;
 		font-size: 1.10rem;
 	}
+	
 }
 
 .language-nav {

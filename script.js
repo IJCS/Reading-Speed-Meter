@@ -8,6 +8,60 @@ let state = {
     results: []
 };
 
+// Translations
+const translations = {
+    en: {
+        wpmLabel: 'WPM',
+        pressStart: 'Press Start to begin reading',
+        startBtn: 'Start',
+        stopBtn: 'Stop',
+        statWords: 'Words:',
+        statSeconds: 'Seconds:',
+        statEstimated: 'Estimated:',
+		resultLabel: 'Results'
+    },
+    es: {
+        wpmLabel: 'PPM',
+        pressStart: 'Presiona Iniciar para empezar a leer',
+        startBtn: 'Iniciar',
+        stopBtn: 'Detener',
+        statWords: 'Palabras:',
+        statSeconds: 'Segundos:',
+        statEstimated: 'Estimado:',
+		resultLabel: 'Resultados'
+    },
+    ru: {
+        wpmLabel: 'СВМ',
+        pressStart: 'Нажмите Старт, чтобы начать чтение',
+        startBtn: 'Старт',
+        stopBtn: 'Стоп',
+        statWords: 'Слова:',
+        statSeconds: 'Секунды:',
+        statEstimated: 'Оценка:',
+		resultLabel: 'Результаты'
+    },
+    de: {
+        wpmLabel: 'WPM',
+        pressStart: 'Drücken Sie Start, um mit dem Lesen zu beginnen',
+        startBtn: 'Start',
+        stopBtn: 'Stopp',
+        statWords: 'Wörter:',
+        statSeconds: 'Sekunden:',
+        statEstimated: 'Geschätzt:',
+		resultLabel: 'Ergebnisse'
+    },
+    fr: {
+        wpmLabel: 'MPM',
+        pressStart: 'Appuyez sur Démarrer pour commencer la lecture',
+        startBtn: 'Démarrer',
+        stopBtn: 'Arrêter',
+        statWords: 'Mots:',
+        statSeconds: 'Secondes:',
+        statEstimated: 'Estimé:',
+		resultLabel: 'Résultats'
+    }
+};
+
 const elements = {
 	//langs elements
     langEn: document.getElementById('lang-en'),
@@ -23,7 +77,15 @@ const elements = {
     seconds: document.getElementById('seconds'),
     estimated: document.getElementById('estimated'),
     resultsContainer: document.getElementById('results-container'),
-    resultsList: document.getElementById('results-list')
+    resultsList: document.getElementById('results-list'),
+	
+	//Labels
+	wpmLabel: document.getElementById('wpm-label'),
+    startBtnText: document.getElementById('start-btn-text'),
+    statWords: document.getElementById('stat-words'),
+    statSeconds: document.getElementById('stat-seconds'),
+    statEstimated: document.getElementById('stat-estimated'),
+	resultlabel: document.getElementById('results-text')
 };
 
 async function loadTexts() {
@@ -41,6 +103,21 @@ async function loadTexts() {
         elements.paragraphText.textContent = 'Error loading texts.json.';
     }
 }
+
+function updateUILanguage() {
+    const t = translations[state.currentLanguage];
+    elements.wpmLabel.textContent = t.wpmLabel;
+    elements.statWords.textContent = t.statWords;
+    elements.statSeconds.textContent = t.statSeconds;
+    elements.statEstimated.textContent = t.statEstimated;
+    elements.resultlabel.textContent = t.resultLabel;
+    
+    if (!state.isReading) {
+        elements.startBtnText.textContent = t.startBtn;
+    }
+}
+
+
 
 function loadRandomText() {
     const textsArray = state.texts[state.currentLanguage];
@@ -74,11 +151,8 @@ function startReading() {
     
     elements.paragraphText.textContent = state.currentText;
     
-    elements.startBtn.textContent = 'Stop ';
-    const hint = document.createElement('span');
-    hint.className = 'hotkey-hint';
-    hint.textContent = '(Space)';
-    elements.startBtn.appendChild(hint);
+    const t = translations[state.currentLanguage];
+    elements.startBtnText.textContent = t.stopBtn;
     
     const wordCount = countWords(state.currentText);
     elements.wordCount.textContent = wordCount;
@@ -119,18 +193,14 @@ function stopReading() {
     displayResults();
     updateAvgWpmDisplay();
     
-    elements.startBtn.textContent = 'Start ';
-    const hint = document.createElement('span');
-    hint.className = 'hotkey-hint';
-    hint.textContent = '(Space)';
-    elements.startBtn.appendChild(hint);
+    const t = translations[state.currentLanguage];
+    elements.startBtnText.textContent = t.startBtn;
     
     loadRandomText();
     elements.wordCount.textContent = '0';
     elements.seconds.textContent = '0';
     elements.estimated.textContent = '—';
 }
-
 function toggleReading() {
     if (state.isReading) {
         stopReading();
@@ -181,6 +251,8 @@ function changeLanguage(lang) {
         selectedButton.classList.add('language-btn-active');
         selectedButton.classList.remove('language-btn-inactive');
     }
+    
+    updateUILanguage();
     
     if (!state.isReading) {
         loadRandomText();
